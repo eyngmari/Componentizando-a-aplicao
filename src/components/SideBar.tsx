@@ -1,3 +1,6 @@
+import React from 'react';
+import { useCallback } from 'react';
+
 import { GenreResponseProps } from "../App";
 import { Button } from "./Button";
 
@@ -9,9 +12,12 @@ interface SideBarProps {
 
 export function SideBar(props: SideBarProps) {
 
-  function handleClickButton(id: number) {
-    props.setSelectedGenreId(id);
-  }
+  const handleClickButton = useCallback(
+    (id: number) => {
+      props.setSelectedGenreId(id)
+    },
+    []
+  )
 
   return (
     <nav className="sidebar">
@@ -30,6 +36,7 @@ export function SideBar(props: SideBarProps) {
       </div>
 
     </nav>
-
   )
 }
+
+export const MemoizeSideBar = React.memo(SideBar)

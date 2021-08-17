@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { Button } from './components/Button';
-import { MovieCard } from './components/MovieCard';
-
-import { SideBar } from './components/SideBar';
-import { Content } from './components/Content';
+import { MemoizeSideBar } from './components/SideBar';
+import { MemoizeContent } from './components/Content';
 
 import { api } from './services/api';
 
 import './styles/global.scss';
-
 import './styles/sidebar.scss';
 import './styles/content.scss';
 
@@ -36,6 +32,7 @@ export function App() {
   const [genres, setGenres] = useState<GenreResponseProps[]>([]);
 
   const [movies, setMovies] = useState<MovieProps[]>([]);
+
   const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
 
   useEffect(() => {
@@ -56,9 +53,8 @@ export function App() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-
-      <SideBar genres={genres} selectedGenreId={selectedGenreId} setSelectedGenreId={setSelectedGenreId}/>
-      <Content movies={movies} selectedGenre={selectedGenre}/>
+      <MemoizeSideBar genres={genres} selectedGenreId={selectedGenreId} setSelectedGenreId={setSelectedGenreId}/>
+      <MemoizeContent movies={movies} selectedGenre={selectedGenre}/>
     </div>
   )
 }

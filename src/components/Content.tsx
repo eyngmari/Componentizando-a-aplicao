@@ -1,3 +1,4 @@
+import React from "react";
 import { GenreResponseProps, MovieProps } from "../App";
 import { MovieCard } from "./MovieCard";
 
@@ -14,6 +15,7 @@ export function Content(props: ContentProps) {
         <span className="category">Categoria:<span> {props.selectedGenre.title}</span></span>
       </header>
 
+
       <main>
         <div className="movies-list">
           {props.movies.map(movie => (
@@ -23,7 +25,6 @@ export function Content(props: ContentProps) {
       </main>
     </div>
   );
-
-
-  // Complete aqui
 }
+
+export const MemoizeContent = React.memo(Content)
